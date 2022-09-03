@@ -18,7 +18,7 @@
             <column name="email" type="varchar">
                 <constraints nullable="true"/>
             </column>
-            <column name="contact" type="integer">
+            <column name="contact" type="varchar">
                 <constraints nullable="true"/>
             </column>
             <column name="city" type="varchar">

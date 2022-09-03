@@ -48,9 +48,9 @@ class UserServiceImplTest {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        user1 = new UserEntity(1,"Rohit","Rajure","RR@gmail.com",702021,"Latur","N");
-        user2 = new UserEntity(2,"Chetan","Wani","CW@gmail.com",9090,"jalgaon","N");
-        user3 = new UserEntity(3,"null","null","null",0,"null","n");
+        user1 = new UserEntity(1,"Rohit","Rajure","RR@gmail.com", String.valueOf(702021),"Latur","N");
+        user2 = new UserEntity(2,"Chetan","Wani","CW@gmail.com", String.valueOf(9090),"jalgaon","N");
+        user3 = new UserEntity(3,"null","null","null", String.valueOf(0),"null","n");
         blog1 = new BlogEntity(1,"Pavsala","Sundar Pavsala","Rohit Rajure","N",user1);
         blog2 = new BlogEntity(2,"Unhala","Sundar Unhala","Chetan Wani","N",user1);
     }
@@ -72,16 +72,16 @@ class UserServiceImplTest {
         UserEntity user = new UserEntity();
         user = user1;
 
-        when(userRepository.findById(1)).thenReturn(Optional.of((new UserEntity(1, "Rohit", "Rajure", "RR@gmail.com", 702021, "Latur", "N"))));
+        when(userRepository.findById(1)).thenReturn(Optional.of((new UserEntity(1, "Rohit", "Rajure", "RR@gmail.com", String.valueOf(702021), "Latur", "N"))));
         ResponseEntity<User> users = userService.getElementById(1);
         assertEquals("Rohit",users.getBody().getFirstName());
         assertEquals("Rajure",users.getBody().getLastname());
         assertEquals("RR@gmail.com",users.getBody().getEmail());
-        assertEquals(702021,users.getBody().getContact());
+        assertEquals(702021l,users.getBody().getContact());
     }
     @Test
     void deleteUserTest() {
-        when(userRepository.findById(1)).thenReturn(Optional.of(new UserEntity(1, "Rohit", "Rajure", "RR@gmail.com", 702021, "Latur", "N")));
+        when(userRepository.findById(1)).thenReturn(Optional.of(new UserEntity(1, "Rohit", "Rajure", "RR@gmail.com", String.valueOf(702021), "Latur", "N")));
         List<BlogEntity> blogs = new ArrayList<>();
         blogs.add(blog1);
         blogs.add(blog2);
@@ -98,8 +98,8 @@ class UserServiceImplTest {
         user.setLastname("Rajure");
         user.setEmail("cm@gmail.com");
         user.setCity("pune");
-        user.setContact(784180);
-        when(userRepository.findById(1)).thenReturn(Optional.of((new UserEntity(1, "Rohit", "Rajure", "RR@gmail.com", 702021, "Latur", "N"))));
+        user.setContact(784180l);
+        when(userRepository.findById(1)).thenReturn(Optional.of((new UserEntity(1, "Rohit", "Rajure", "RR@gmail.com", String.valueOf(702021), "Latur", "N"))));
         ResponseEntity<Void> Output=userService.updateUser(user);
         assertNotNull(Output);
         assertEquals( HttpStatus.OK,Output.getStatusCode());
@@ -163,7 +163,7 @@ class UserServiceImplTest {
         user.setLastname("Rajure");
         user.setEmail("cm@gmail.com");
         user.setCity("pune");
-        user.setContact(784180);
+        user.setContact(784180l);
         when(userRepository.findById(1)).thenThrow(ErrorHandler.class);
 //        ResponseEntity<Void> Output=userService.updateUser(user);
 //        assertNotNull(Output);

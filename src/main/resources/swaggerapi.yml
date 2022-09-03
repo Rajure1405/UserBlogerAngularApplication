@@ -428,6 +428,7 @@ definitions:
         description: User EmailId
       contact:
         type: integer
+        format: int64
         description: User contact number
       city:
         type: string

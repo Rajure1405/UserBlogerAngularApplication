@@ -27,7 +27,7 @@ public class UserEntity {
         this.password = password;
     }
 
-    public UserEntity(Integer userId, String firstName, String lastname, String email, String password, Integer contact, String city, String isDeleted, Timestamp createdOn, Timestamp updatedOn, Set<BlogEntity> blogEntities) {
+    public UserEntity(Integer userId, String firstName, String lastname, String email, String password, String contact, String city, String isDeleted, Timestamp createdOn, Timestamp updatedOn, Set<BlogEntity> blogEntities) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastname = lastname;
@@ -48,7 +48,7 @@ public class UserEntity {
     private String password;
 
     @Column(name="contact")
-    private Integer contact;
+    private String contact;
 
     @Column(name="city")
     private String city;
@@ -70,7 +70,7 @@ public class UserEntity {
 
     }
 
-    public UserEntity(Integer userId,String firstName, String lastname, String email, Integer contact, String city,String isDeleted) {
+    public UserEntity(Integer userId,String firstName, String lastname, String email, String contact, String city,String isDeleted) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastname = lastname;
@@ -80,7 +80,7 @@ public class UserEntity {
         this.isDeleted = isDeleted;
     }
 
-    public UserEntity(String firstName, String lastname, String email, Integer contact, String city) {
+    public UserEntity(String firstName, String lastname, String email, String contact, String city) {
 
         this.firstName = firstName;
         this.lastname = lastname;
@@ -89,7 +89,7 @@ public class UserEntity {
         this.city = city;
     }
 
-    public UserEntity(String firstName, String lastname, String email, Integer contact, String city, Timestamp createdOn, Timestamp updatedOn) {
+    public UserEntity(String firstName, String lastname, String email, String contact, String city, Timestamp createdOn, Timestamp updatedOn) {
 
         this.firstName = firstName;
         this.lastname = lastname;
@@ -100,7 +100,7 @@ public class UserEntity {
         this.updatedOn = updatedOn;
     }
 
-    public UserEntity(String firstName, String lastname, String email, Integer contact, String city, Timestamp createdOn, Timestamp updatedOn, Set<BlogEntity> blogEntities) {
+    public UserEntity(String firstName, String lastname, String email, String contact, String city, Timestamp createdOn, Timestamp updatedOn, Set<BlogEntity> blogEntities) {
         this.firstName = firstName;
         this.lastname = lastname;
         this.email = email;
@@ -144,11 +144,11 @@ public class UserEntity {
         this.email = email;
     }
 
-    public Integer getContact() {
+    public String getContact() {
         return contact;
     }
 
-    public void setContact(Integer contact) {
+    public void setContact(String contact) {
         this.contact = contact;
     }
 

@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
             user.setFirstName(e.getFirstName());
             user.setLastname(e.getLastname());
             user.setEmail(e.getEmail());
-            user.setContact(e.getContact());
+            user.setContact(Long.valueOf(e.getContact()));
             user.setCity(e.getCity());
             user.setPassword(e.getPassword());
             user.setCreatedOn(String.valueOf(e.getCreatedOn()));
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
                 user.setFirstName(userEntity.getFirstName());
                 user.setLastname(userEntity.getLastname());
                 user.setEmail(userEntity.getEmail());
-                user.setContact(userEntity.getContact());
+                user.setContact(Long.valueOf(userEntity.getContact()));
                 user.setCity(userEntity.getCity());
                 user.setPassword(userEntity.getPassword());
                 user.setCreatedOn(String.valueOf(userEntity.getCreatedOn()));
@@ -110,7 +110,7 @@ public class UserServiceImpl implements UserService {
             userEntity.setFirstName(user.getFirstName());
             userEntity.setLastname(user.getLastname());
             userEntity.setEmail(user.getEmail());
-            userEntity.setContact(user.getContact());
+            userEntity.setContact(String.valueOf(user.getContact()));
             userEntity.setCity(user.getCity());
             userEntity.setPassword(user.getPassword());
             userEntity.setUpdatedOn(new Timestamp(System.currentTimeMillis()));
@@ -122,7 +122,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseEntity<Void> postUser(User user) {
-        UserEntity userEntity = new UserEntity(user.getFirstName(), user.getLastname(), user.getEmail(), user.getContact(), user.getCity());
+        UserEntity userEntity = new UserEntity(user.getFirstName(), user.getLastname(), user.getEmail(), String.valueOf(user.getContact()), user.getCity());
         userEntity.setCreatedOn(new Timestamp(System.currentTimeMillis()));
         //userEntity.setPassword(encoder.encodeToString(user.getPassword().getBytes(StandardCharsets.UTF_8)));
         userEntity.setPassword(passwordEncoder.encode(user.getPassword()));

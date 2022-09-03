@@ -47,8 +47,8 @@ class BlogServiceImplTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        user1 = new UserEntity(1, "Rohit", "Rajure", "RR@gmail.com", 702021, "Latur", "N");
-        user2 = new UserEntity(2, "Chetan", "Wani", "CW@gmail.com", 9090, "jalgaon", "N");
+        user1 = new UserEntity(1, "Rohit", "Rajure", "RR@gmail.com", String.valueOf(702021), "Latur", "N");
+        user2 = new UserEntity(2, "Chetan", "Wani", "CW@gmail.com", String.valueOf(9090), "jalgaon", "N");
 
         blog1 = new BlogEntity(1, "Pavsala", "Sundar Pavsala", "Rohit Rajure", "N", user1);
         blog2 = new BlogEntity(2, "Unhala", "Sundar Unhala", "Chetan Wani", "N", user2);
@@ -98,7 +98,7 @@ class BlogServiceImplTest {
         blog.setUserBlogId(blog1.getUserEntity().getUserId());
         blog.setPublishBy(blog1.getPublishBy());
         blog.setIsDeleted(blog1.getIsDeleted());
-        when(userRepository.findById(blog1.getUserEntity().getUserId())).thenReturn(Optional.of((new UserEntity(1, "Rohit", "Rajure", "RR@gmail.com", 702021, "Latur", "N"))));
+        when(userRepository.findById(blog1.getUserEntity().getUserId())).thenReturn(Optional.of((new UserEntity(1, "Rohit", "Rajure", "RR@gmail.com", String.valueOf(702021), "Latur", "N"))));
         //when(userRepository.findById(blog1.getBlogId())).thenThrow(new ErrorHandler());
         ResponseEntity<Void> output = blogService.postBlog(blog);
         assertNotNull(output);
