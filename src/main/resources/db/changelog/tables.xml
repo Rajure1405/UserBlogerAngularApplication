@@ -6,7 +6,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
     <changeSet author="pn" id="ddl_m_01">
         <createTable tableName="user">
-            <column name="user_id" type="int" autoIncrement="true" defaultValue="1">
+            <column name="user_id" type="int" autoIncrement="true">
                 <constraints nullable="false" unique="true" primaryKey="true" primaryKeyName="user_id_pk"/>
             </column>
             <column name="first_name" type="varchar">
@@ -38,18 +38,10 @@
             </column>
 
         </createTable>
-        <insert tableName="User">
-            <column name="first_name">Rohit</column>
-            <column name="last_name">Rohit</column>
-            <column name="email">rr@gmail.com</column>
-            <column name="password">Pass@123</column>
-            <column name="contact">1231231234</column>
-            <column name="city">Pune</column>
-            <column name="is_deleted">N</column>
-        </insert>
+
 
         <createTable tableName="blog">
-            <column name="blog_id" type="int" autoIncrement="true" defaultValue="1">
+            <column name="blog_id" type="int" autoIncrement="true">
                 <constraints nullable="false" unique="true" primaryKey="true" primaryKeyName="blog_id_pk"/>
             </column>
             <column name="user_blog_id" type="int">
